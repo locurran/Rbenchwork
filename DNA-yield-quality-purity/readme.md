@@ -1,5 +1,5 @@
 ## Intro
-Samples should match in DNA input quantities for multiplexed RADseq libraries and, preferably, be comparable in average fragment length. (In contrast, diversity might be advisable in other aspects, such as source population, where a study incorporates several libraries.)
+Sample input should be normalized for DNA input quantity in multiplexed RADseq libraries and, preferably, be comparable in average fragment length. (In contrast, diversity might be advisable in other aspects, such as source population, where a study incorporates several libraries.) Confirming purity keeps contaminants from interfering with downstream enzymatic reactions.
 
 ## Metrics
 
