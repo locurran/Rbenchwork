@@ -6,3 +6,6 @@ I recently (Sept 2021) wrapped up a series of DNA extractions with associated qu
 
 ## Upcoming
 Give me a week or two (October) to start sharing these!
+
+## Output
+Both Rmarkdown (Rmd) and latex files (tex) compile in Rstudio. [Overleaf](overleaf.com) can help with latex edits if you've some extensive mods to make.
