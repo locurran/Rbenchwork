@@ -1,0 +1,86 @@
+---
+title: "PicoGreen protocol for 1 plate of samples, standards" 
+subtitle: "xxxx xx xx"
+output: pdf_document
+fontsize: 12 pt
+header-includes:
+  \pagenumbering{gobble}
+  \usepackage{longtable}
+  \usepackage{caption}
+---
+
+\captionsetup[table]{labelformat=empty}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(kableExtra)
+```
+
+- standards made up in triplicate
+- calibration plate with triplicate standards
+- 96-well sample plate
+
+Preparation
+
+- label 1x TE, PicoGreen (PG) centrifuge tubes
+- label optical plates. Gen5 protocols are set for Costar 96 black opaque 3915
+- have on hand 1 full box each of P10, P200 tips + 4 columns P200
+- turn on plate reader in advance of use
+
+1. prepare 1x TE buffer (10 mM Tris-HCl, 1 mM EDTA, ph 7.5) from the supplied 20x
+
+purpose |               -        |  expansion | - | with overage
+- | - | - | - | -
+96 samples         | @ 99 ul ea  |  9 500
+120 vol. dilute PG | @ 100 ul ea | 12 000     | @ 1.09 | 13 100
+standards          | separate protocol  |  3 930
+__total__              |      -      | 25 430 | @ 1.09 | __27 700__
+
+-  26 315 ul H2O
+-   1 385  ul 20X TE
+
+2. aliquot off 13 034.5 ul 1x TE for PG solution
+3. drop 99 ul of 1x TE in the sample plate wells
+
+\pagebreak
+
+4. drop in 100 ul standard curve per well on calibration plate
+
+$\cdot$ | 1 | 2 | 3
+- | - | - | -
+A | 1x TE | 1x TE | 1x TE
+B | 64  | 64  | 64 ng / ml
+C | 128 | 128 | 128
+D | 256 | 256 | 256
+E | 512 | 512 | 512
+F | 640 | 640 | 640
+G | 800 | 800 | 800
+H | 1000 | 1000 |1000
+
+5. homogenize dna on thermomixer 1 min. 400 rpm, 4C. 
+6. drop tips for negative controls, both boxes
+7. spin down microplate
+8. add 1 ul to each sample well
+
+```{r}
+miss <- tibble(` ` = LETTERS[1:8], `1` = rep(" ", 8), '2' = rep (" ", ),
+               `3` = rep(" ", 8), `4` = rep(" ", 8), `5` = rep(" ", 8), 
+               `6` = rep(" ", 8), `7` = rep(" ", 8), `8` = rep(" ", 8),
+               `9` = rep(" ", 8), `10` = rep(" ", 8), `11` = rep(" ", 8), `12` = rep(" ", 8))
+kbl(miss, caption = "missed aliquots: catch with a P10", longtable = TRUE) %>% kable_styling()
+```
+
+9. prepare a 200-fold dilution of PG in 1x TE
+
+- Keep reagent in foil while thawing and in diluted state. Vortex well, spin down.
+- For 13 100 ul pg solution:  
+    - 13 034.5 ul 1x TE
+    - 65.5 ul PG
+
+10. Add 100 ul diluted PG to every well. Aspirate 10X. New tips each time, both plates.
+11. Cover optical plates with old Costar plates or foil. Incubate at RT for 5 min.
+12. Read the plates.
+
+
+
