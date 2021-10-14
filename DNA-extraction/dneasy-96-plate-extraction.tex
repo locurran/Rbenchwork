@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{tmargin=0.75in, bmargin=0.75in}
+
+\title{Qiagen DNeasy 96 fin clip DNA extraction \\ Plate xx, 20xx xx xx}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Points before starting}
+\begin{itemize}
+    \item Centrifugation steps are done at room temperature.
+    \item Transferring lysate requires extended-length tips (ELT). VWR P1000s work here.
+    \item Supplies required:
+    \subitem 5 columns Eppendorf green P1000, 1 box ELT P1000, 2 boxes P200
+    \subitem 2 new or autoclaved S-blocks, DNeasy plate, 1.2 ml collection microtube rack, elution microtube rack, 3 Airpore Tape Sheets. 
+    \subitem Empty collection microtube rack with end removed. 
+    \subitem Balance collection microtube rack, S-block, DNeasy plate and elution microtube rack
+    \subitem 19 ml ATL (1.1x), 2 ml pro-K (1.04x), 43 ml AL/E (1.09x), 52 ml AW1 and AW2 (1.08x), 13 ml AE (1.08x).
+\end{itemize}
+
+\section*{Things to do before starting}
+\begin{itemize}
+    \item AL, AW1, and AW2 are supplied as concentrates. Before using for the first time, add the appropriate amount of 100\% ethanol and shake well.
+    \item ATL and AL/E may form precipitates in storage. Can pour off into beaker to inspect. Warm to 56C as needed.
+    \item Preheat thermomixer to 56C.
+\end{itemize}
+
+\section*{Lysing with ATL:proteinase-K}
+\begin{enumerate}
+    \item add 180 ul lysis buffer ATL to each of racked collection microtubes.
+    \item submerge $\approx$4 mm triangular snips ($\leq$ 20 mg) of fin clip samples in tubes.
+    \item add 20 ul pro-K to each sample. Cap tubes.
+    \item vortex or shake vigorously 15 s. Spin down briefly at 3000 rpm.
+    \item check that samples are submerged. Tape lid down \textbf{securely}.
+    \item incubate in thermomixer at 56C for 12+ hr., with 1 min. of 1200 rpm agitation every 20 min.
+    \item At conclusion, lysate may be viscous, but check for gelatinous masses by tipping. If present, extend lysis with an additional 100 ul ATL and 15 ul pro-K.
+    \item Briefly spin down condensate at 3000 rpm.
+\end{enumerate}
+
+% RNase would be added here
+
+\pagebreak
+
+\section*{Binding with AL/E}
+prep: label DNeasy 96 plate, S-block, and elution microtube rack. Position plate on top of S-block. Do same for balance plate and block. Load balance plate. Preheat incubator to 56C.
+
+\begin{enumerate}
+    \item remove caps and add 410 ul AL/E to each sample. Seal with new caps. If  additional ATL:K was added, use 615 ul AL/E.
+    \item vigorously shake samples for 15 s. Briefly spin down at 3000 rpm. A white precipitate is ok, but vortex any gelatin formed.
+    \item working with 1 strip at a time in the separate rack, use ELT to transfer the 610 ul of lysate to the DNeasy plate. Avoid sample overflow. Avoid taking up undigested tissue, taking up only 600 ul lysate as necessary. Dispense directly to membrane.
+    \item seal with Airpore Tape Sheet.
+    \item centrifuge \textbf{10} min at 6000 rpm (5796 x g). Check that all lysate has passed through.
+\end{enumerate}
+    
+\section*{First wash with AW1}
+prep: check that incubator is at 56C, adjust balance block weight.
+\begin{enumerate}
+    \item remove sheet, add 500 ul wash buffer AW1.
+    \item seal with new tape sheet.
+    \item spin for \textbf{5} min at 6000 rpm.
+\end{enumerate}
+
+\section*{Second wash with AW2}
+prep: warm AE in thermomixer, adjust balance block.
+
+\begin{enumerate}
+    \item replace S-block with clean, dry block.
+    \item remove tape sheet, add 500 ul wash buffer AW2.
+    \item \textbf{do not seal} with tape sheet.
+    \item spin for \textbf{15} min at 6000 rpm .
+    \begin{center}
+            \emph{Additional time and heat from centrifuge dries ethanol from membrane.}
+    \end{center}
+\end{enumerate}
+
+\section*{Single elution with AE}
+\begin{enumerate}
+    \item place DNeasy plate on elution microtube rack.
+    \item dispense 125 ul elution buffer AE directly to membrane.
+    \item seal with new tape sheet.
+    \item tap assembly on table to distribute AE over membrane.
+    \item incubate for 5 min at RT, centrifuge for 2 min at 6000 rpm.
+    \item from elution microtubes, aliquot 30 ul working stock. Spin down aliquot, store -20C.
+    \item seal elution microtubes with special purpose caps. store -80C.
+\end{enumerate}
+
+\section*{Target concentration, single elution}
+For fin clips, Qiagen gives an expected yield of 10--20 ug given a double elution with 200 ul. (We do a single.)
+$$\frac{15 \ ug \ DNA}{125 \ ul \ eluate} \cdot \frac{1000 \ ng}{ug} = \frac{120 \ ng}{ul}$$
+\end{document}
