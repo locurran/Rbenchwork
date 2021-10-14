@@ -6,3 +6,6 @@ Sample input should be normalized for DNA input quantity in multiplexed RADseq l
 - Measuring yield, or concentration, for > 20 samples is best done by fluorescence in a plate reader, with all plates in a study preferably compared in a single run with the same standard.
 - Testing quality, or fragment size, might be done by gel electrophoresis against a ladder or by tapestation.
 - Ensuring purity, or lack of contaminants, is simply done by absorbance.
+
+## Standards for plate reader quantitation
+Serial dilution of lambda standard helps in achieving a high R2 on the standard curve. This version weights the dilutions to fall more in the expected range of concentrations of DNA sampled.
