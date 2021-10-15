@@ -1,0 +1,191 @@
+---
+output: 
+  pdf_document:
+    fig_caption: FALSE
+geometry: margin=2cm
+fontsize: 12 pt
+
+header-includes:
+    - \usepackage[labelformat=empty]{caption}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+\begin{flushright}
+20xx xx xx library names
+\end{flushright}
+
+\begin{center}
+\large{RADtag generation > RADtag isolation > \textbf{Illumina library prep}} 
+\end{center}
+
+We use the NEBNext Ultra DNA Library Prep Kit E7370 and Multiplex oligos from E7600.
+
+### A. end prep (green tubes)
+*This prepares the sheared ends of the RADtags for the NEBNext Adaptor to come, A-tailing the 3' ends and phosphorylating the 5'.*
+
+![](04-images-lib-prep/end-repair.png)
+
+Setup
+
+- move library to fridge to thaw
+- move (green) \textcolor{green}{End Prep Reaction Buffer} to fridge if frozen solid
+- move (red) \textcolor{red}{NEBNextAdaptor for Illumina} to fridge now if working with a full tube
+    - aliquot this to reduce lead time
+
+1. Transfer 55.5 ul of library with cleanup beads to a 0.5 ml PCR tube, add 
+
+- 6.5 ul (green) \textcolor{green}{End Prep Reaction Buffer} (Ultra kit)
+- 3.0 ul of (green) \textcolor{green}{End Prep Enzyme Mix} (Ultra kit)
+
+
+2. Aspirate 55 ul 10X, spin down. A few bubbles are OK.
+3. 5-NEB-ENDPREP:
+
+    - Lid 75C, TSP heated lid on, switch off lid at low block temp
+    - Temp mode: safe
+    - Volume: 65 ul
+    1. 20C 30:00
+    2. 65C 30:00
+    3. 4C $\infty$
+    
+
+\pagebreak
+
+### B. adaptor ligation (red tubes)
+*We ligate circular NEBNext Adaptors to the ends of dsDNA.*
+
+![](04-images-lib-prep/adaptor-ligation.png)
+
+- Take cleanup beads out of fridge.
+- Make up adaptor dilution buffer (10 mM Tris-HCl pH 7.5 with 10 mM NaCl).  
+For 1.0 ml of stock: 980 ul H2O, 10 ul 1 M Tris-HCl pH 7.5, 10 ul 1 M NaCl.  
+(equivalent to NEBNext Adaptor Dilution Buffer)
+
+1. Spin end prep reaction down and add directly to the reaction: 
+
+- 15 ul (red) \textcolor{red}{Blunt/TA Ligase Master Mix} (Ultra). (viscous: take care in aliquoting)
+- 1 ul of (red) \textcolor{red}{Ligation Enhancer} (Ultra)
+- 2.5 ul (red) \textcolor{red}{NEBNextAdaptor for Illumina} (Multiplex) __diluted 1:10__
+    - 2 ul adaptor, 18 ul adaptor dilution buffer. 
+    - Use immediately.
+
+2. MM is viscous: mix well. Aspirate 80 ul 10X, spin down. A few bubbles are OK.
+3. 6-NEB-LIGA:
+    - __Lid off.__ Can switch thermocyclers to avoid the hot lid from end prep.
+    - temp mode: safe
+    - volume: 83.5 ul
+    1. 20C $\infty$
+
+4. Go to the next step after 15 min. have elapsed.  
+
+*USER enzyme opens up the  hairpin loop of the adaptor.*
+
+![](04-images-lib-prep/U-excision.png)
+
+5. Add 3 ul of  (red) \textcolor{red}{USER enzyme} (Multiplex)
+6. Aspirate 80 ul 10X, spin down. A few bubbles are OK.
+
+\pagebreak
+
+7. 7-NEB-USER
+    - Lid 47C, TSP heated lid on, switch off lid at low block temp
+    - temp mode: safe
+    - Volume 86.5 ul
+    1. 37C 15:00
+    2. 4C $\infty$
+    
+__Stopping point, store at -20C overnight.__
+
+### C. size selection of adaptor-ligated DNA 
+*We utilize cleanup beads to restrict the distribution of fragment sizes to a targeted size range.  
+__Large fragment removal__ disposes of the largest fragments, preferentially bound to the beads.*
+
+- Make 1.0 ml fresh 80% ethanol: 800 ul 100% EtOH, 200 ul H2O.
+- Vortex beads, aliquot for the next 3 bead steps (125 ul + overage). Stage out of the light.
+- Bring out (blue) \textcolor{blue}{NEBNext Q5 Hot Start HiFi PCR Master Mix} to thaw at RT if frozen solid. Invert to mix, watching for precipitates. Put on ice.
+- Could move a second library to fridge to thaw now.
+
+1. Transfer ligation rxn to a 1.7 ml tube, place on magnet to separate out prior cleanup beads.
+2. __Move eluate__ to a new 1.7 ml tube, bringing volume up to 100 ul with H2O.
+3. Add 55 ul new cleanup beads, aspirate 150 ul 10X. *Nominal 0.55X PEG:sample ratio*
+4. Incubate at RT 5 min.
+5. Place on mag rack for $\leq$ 5 min., aspirate beads away from bottom of tube.
+6. __Keep eluate__ and transfer to a 1.7 ml tube.
+
+*__Small fragment removal__ binds the mid-distribution fragment sizes to the beads.  
+Smaller fragment sizes remain behind in solution to be discarded.*
+
+7. Add 25 ul (0.8X) of cleanup beads, aspirate 150 ul 10X.
+8. Incubate at room temperature for __15__ min. [Thaw PCR primers now.]  
+  *Longer incubation gives the DNA more time to "find" the relatively few beads.*
+9. Move to mag rack for $\leq$ 5 min. separation.
+10. __Discard sup.__
+11. Add 195 ul 80% ethanol, leave in for 30 s. Remove and discard ethanol.
+12. Repeat ethanol wash, remove trace ethanol.
+13. Dry on rack with cap open $\leq$ 1.5 min.
+14. Resuspend beads with 17 ul 0.1X TE by aspiration.
+15. Incubate 5 min.
+16. Place on magnet for $\leq$ 5 min.
+17. __Transfer 15 ul eluate__ to a 0.2 ml PCR tube.
+18. Qubit remainder. \hfill RFU_______________________  ng/ul _______
+
+\hfill RFU_______________________  ng/ul _______
+
+__Stopping point, store at -20C overnight.__
+
+\pagebreak
+
+### D. PCR Amplification (blue tubes)
+*NEBNext i5 and i7 primers incorporate the Illumina indexes that identify the library.*
+
+Setup: move primers to fridge. Primers for libraries blended in a lane must be color-balanced.
+
+1. For a low-concentration library, use 2.5 ul of primers. For high, use 5.0. Add to the 15 ul
+
+- 25 ul (blue) \textcolor{blue}{NEBNext Q5 Hot Start HiFi PCR MasterMix} (Ultra)
+- 2.5 | 5.0 ul i5 Index Primer (Multiplex): ____________________
+- 2.5 | 5.0 ul i7 Index Primer (Multiplex): ____________________
+- 5.0 | 0.0 ul H2O
+2. Aspirate 40 ul 10X, quick spin.
+3. 8-NEB-PCR
+    - Lid 105C, TSP heated lid on, switch off lid at low block temp
+    - Temp mode: fast
+    - Volume 50 ul
+    1. 98C, 0:30
+    2. 98C, 0:10
+    3. 65C 1:15
+    - Total # of cycles for steps 2:3 9--12. Default is 12.
+    4. 65C 5:00
+    5. 4C $\infty$
+
+Could start end prep on second library now.
+
+### E. bead cleanup of PCR reaction
+
+1. Transfer PCR product to 1.7 ml tube, bring up to 50 ul with H20.
+2. Transfer 45 ul (0.9X) resuspended cleanup beads, aspirate 75 ul 10X.
+3. Incubate at RT 5 min.
+4. Place on rack for $\leq$ 5 min., aspirate beads away from bottom of tube.
+5. __Remove and discard sup.__
+6. Add 195 ul 80% ethanol, incubate 30 s. Remove and discard ethanol.
+7. Repeat ethanol wash.
+8. Quick spin. Remove trace ethanol.
+9. Dry on rack with cap open $\leq$ 2 min.
+10. Resuspend beads with 33 ul Qiagen EB (10 mM Tris-HCl). Can include 0.05% Tween 20.
+11. Incubate 5 min.
+12. Place on rack for $\leq$ 5 min.
+13. __Transfer 30 ul eluate__ to 1.7 ml tube, refrigerate. At conclusion, store at -20C.
+14. Qubit, Nanodrop remainder.  
+RFU__________________fluor ____  abs ____  260/230 ____  260/280 ____  
+RFU__________________fluor ____  abs ____  260/230 ____  260/280 ____  
+16. Dilute 1 ul sample for bioanalyzer HS-DNA to 500 pg/ul. End with ~75:25 EB:H2O.

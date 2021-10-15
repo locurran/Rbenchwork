@@ -1,0 +1,117 @@
+---
+output: 
+  pdf_document:
+    fig_caption: FALSE
+geometry: margin=1.9cm
+fontsize: 12 pt
+
+header-includes:
+    - \usepackage[labelformat=empty]{caption}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+\begin{flushright}
+20xx xx xx library names
+\end{flushright}
+
+\begin{center}
+\large{RADtag generation > \textbf{RADtag isolation} > Illumina library prep} 
+\end{center}
+*Dynabeads bind our RADtags at the biotinylated adaptor. Other fragments wash away.*
+
+Setup
+
+- Move frozen Bioruptor tubes and CutSmart to fridge
+- Bring Dynabeads out of fridge to warm up.
+- Pull 2X Bind and Wash Buffer (10 mM Tris-HCl pH 8.0, 1 mM EDTA pH 8.0, 2 M NaCl). 
+    - 650 ul per library for 2X wash, same to make up 1X.
+- Make up 1X BW. Aliquot 1/2 of 1X BW to warm in thermomixer at 56C.
+
+### A. prepare Dynabead M-280 streptavidin magnetic beads
+
+__Dynabead wash steps are done with tubes removed from magnet.__
+
+1. Gently pulse-vortex Dynabead bottle > 30 s.
+2. For each Bioruptor tube, transfer 30 ul Dynabeads to a 1.7 ml tube.
+4. Place tubes in magnetic rack and remove supernatant when clear.
+4. Wash the beads with 100 ul 2X BW buffer: add, aspirate, wait 30 s.
+5. Quick spin as needed, place on magnet, remove sup.
+6. Repeat the 2X BW wash.
+7. Resuspend beads in 100 ul 2X BW buffer.
+
+### B. Dynabead binding
+
+1. Pool Bioruptor tube contents in a 1.7 ml tube, place on magnet.
+2. Pull 100 ul eluate for each tube of Dynabeads. 
+2. Aspirate.
+3. Incubate at RT for 20 min with gentle aspiration every 2 minutes.
+4. Quick spin, place on magnet.
+5. Remove sup.
+6. Resuspend in 150 ul 1X BW by aspiration.
+7. Replace on magnet, remove sup.
+8. Repeat wash step in 1X BW.
+9. Repeat wash step with 150 ul 56C 1X BW buffer.
+10. Repeat 56C wash step.
+
+\pagebreak
+
+### C. liberate DNA from Dynabeads  
+*SbfI cuts the biotynilated section of the BestRAD adaptor, releasing the RADtags from the beads.*
+
+Setup: dilute CutSmart to 1X before beginning these washes and setting up SbfI reaction.  
+Per library, make 550 ul 1X: 495 H2O, 55 ul 10X Cutsmart.
+
+1. Resuspend washed beads in 100 ul 1X CutSmart, move to new 1.7 ml tubes.
+2. Place on magnet, remove sup.
+3. Repeat 1X CutSmart wash for a second rinse.
+4. Make a master mix of 80 ul 1X Cutsmart and 4 ul SbfI
+5. Resuspend beads and bound DNA in 42 ul MM per tube.
+6. Aspirate as pipette to 0.2 ml pcr tubes.
+7. Thermocycle, slight change from first Sbf1 digest. Aspirate gently every 12 min.
+
+4-BIOTIN-DIG:
+
+    - Lid 105C, TSP heated lid on, switch off lid at low block temp
+    - Temp mode: standard
+    - Volume 40 ul
+    1. 37C 60:00 (1 hour)
+    2. 12C infinity  
+    
+Could start 2nd library now.
+
+### D. bead cleanup of biotin digest
+
+Setup
+
+- Bring cleanup beads out of fridge to warm up.
+- Make 80% ethanol, 1 ml for 2 libraries: 800 ul 100% EtOH, 200 ul H2O.
+
+1. Combine biotin digests in 1.7 ml tube, place on magnet.
+2. __Save eluate__ to new 1.7 ml tube. Measure volume.
+3. Transfer equal volume resuspended cleanup beads to tube. Aspirate.
+4. Incubate at RT 5 minutes.
+5. Place on magnet for $\leq$ 2 minutes; aspirate beads away from bottom of tube.
+6. __Remove and discard supernatant.__ Cleanup beads now bind the DNA.
+7. Add 195 ul 80% ethanol (cover beads); leave in for 30 s. Remove and discard ethanol.
+8. Repeat ethanol wash.
+9. Quick spin. Remove trace ethanol.
+10. Dry with cap open 2 min.
+11. Resuspend beads in 57 ul 0.1X TE by aspiration.
+12. Incubate 5 min.
+13. Place on magnet for $\leq$ 5 min.
+14. Take 1 ul for quantifying by Qubit. Expect low concentrations (0.1--0.6 ng/ul).
+15. Resuspend, leave beads in for next step.
+
+RFU _______________ fluor _____     RFU _______________ fluor _____  
+__Stopping point, freeze overnight.__
+

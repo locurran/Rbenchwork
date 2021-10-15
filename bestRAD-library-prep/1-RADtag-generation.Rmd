@@ -1,0 +1,168 @@
+---
+output: 
+  pdf_document:
+    fig_caption: FALSE
+geometry: margin=2.35cm
+fontsize: 12 pt
+
+header-includes:
+    - \usepackage[labelformat=empty]{caption}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+\begin{flushright}
+20xx xx xx, names of 2 libraries
+\end{flushright}
+
+This 3-part protocol replicates the bestRAD portion of Ali et al. (2016).  
+See References, in particular O'Rourke and Miller (2020), Nichols and Longo (2019).  
+
+\begin{center}
+\large{\textbf{RADtag generation} > RADtag isolation > Illumina library prep} 
+\end{center}
+
+### A. digestion with SbfI
+Setup: we might run libraries through the parts of the protocol in pairs with staggered start times and up to 6 being sonicated at once. Plate normalization can be done ahead of time and frozen. Into each well, pipette Y 0.1X TE and X DNA (X+Y = 10 ul dilution to 10-15 ng/ul).
+
+- Start digestion later in the day for overnight ligation.
+- Move plate, Cutsmart as needed to fridge.
+- Make up a microplate balance with 12 ul/well.
+- Start thermomixer cooling.
+- Have 4 P10 boxes per library with tips removed for negative controls. 
+
+SbfI care
+
+- Keep everything on ice while preparing RE-MM (master mix) and DNA.
+- Don't vortex the SbfI. Keep it cold and bring out of freezer for short periods.
+- Add SbfI last, go quickly to the next step
+
+1. spin down plate
+2. Prepare SbfI digestion master mix, aspirate to mix.  
+1X: 0.68 ul ddH2O + 1.2 ul NEB 10X CutSmart Buffer + 0.12 ul SbfI-HF = 2 ul
+
+per library, 115X (230 ul) in 0.5 ml tube:
+
+- 78.2 ul ddH2O
+- 138 10X CutSmart Buffer, avoiding bubbles
+- 13.8 ul SbfI-HF
+
+4. Aliquot 28 ul RE-MM into each tube of a 0.2 ml 8-tube strip; quick spin.
+5. Into each plate well, pipette 2 ul RE-MM with 8-channel pipette.
+6. Seal, quick spin. Thermomix at 4 C, 450 rpm, 1 min.
+
+\pagebreak
+
+7. Thermocycle with 1-SBFI-DIG:
+
+    - Lid 105C, TSP heated lid on, switch off lid at low block temp
+    - Temp mode: safe
+    - Volume 12 ul
+    1. 37C 60:00 (1 hour)
+    2. 80C 20:00 (20 min)
+    3. 12C inf
+    
+### B. RAD adaptor ligation to SbfI cut sites 
+*These are our P1/MID adaptors. The P1 binds to the flow cell during sequencing. The MID is the barcode unique to each individual.*
+
+Setup
+
+- Make up a microplate balance with 16 ul/well.
+- Move multiplex adaptors and T4 buffer as needed to fridge.
+
+Ligase care
+
+- Keep everything on ice.
+- Add ligase last and keep cold; move quickly to ligation.
+
+1. Spin down library plate.
+2. Add 2 ul annealed bestRAD SbfI adaptors, using an 8-channel pipette.
+3. Prepare ligation master mix, aspirate to mix.  
+1X: 1.28 ul ddH2O + 0.56 ul 10X T4 DNA ligase buffer + 0.16 T4 DNA ligase = 2 ul
+
+per library, 115X (230 ul) in 0.5 ml tube
+
+- 147.2 ul ddH2O
+- 64.4 ul 10X T4 DNA ligase buffer
+- 18.4 ul T4 DNA ligase
+
+4. Aliquot 28 ul AL-MM into each well of 8-well tube strip; spin down.
+5. Add 2 ul AL-MM to each well, using an 8-channel pipette.
+6. Seal. Quick spin. Thermomixer at 400 rpm for 1 min at RT.
+7. Thermocycle 12 hrs. with 2-RAD-LIGA-ALL-NT:
+
+    - __Lid off__
+    - Temp mode: standard
+    - Volume 16 ul
+    1. 20C infinity
+    
+
+### C. library multiplexing (pooling *sensu lato* )
+
+1. In the morning, spin down condensate; heat inactivate with 3-RAD-LIGA-INACTIVATE:
+
+    - Lid 105C, TSP heated lid on, switch off lid at low block temp
+    - Temp mode: standard
+    1. 65C 20:00
+    2. 12C infinity
+    
+2. Pool 5.3 ul (12.5 ng/ul preparations, 95 samples in libraries) from each library plate well (8 ul for lower concentration, 5 ul for more). Multi-channel pipette into 0.2 ml 8-tube strip, transfer to a 1.7 ml tube. Freeze plate for future use.
+
+### D. bead purification
+Solubilized DNA binds to cleanup beads suspended in PEG and NaCl during a short incubation period. We utilize 1.7 ml tubes on a magnetic rack to separate these paramagnetic beads from the solution. Short oligos and junk go away with removal of supernatant and in subsequent ethanol washes. DNA is then eluted from the beads with a buffer. 
+
+Bring cleanup bead bottle into room temperature 30 min. prior. Gently pulse vortex bottle 30 s. Measure volume of DNA, add equal volume of beads to multiplexed library, and aspirate. Incubations for DNA/beads and beads/buffer are done off-rack. Then, put the tube on the rack. Aspirate beads away from the bottom of the tube. Leave on rack till solution clears ($\leq$ 5 min.) The beads will collect in a streak on the back of the tube. Remove and discard the supernatant. It's not necessary to remove every last drop; P1000 is fine.
+
+Two ethanol washes are performed with the tube still on the rack. Keep contaminating droplets away from the upper sides of the tube. Disturbing the beads here can result in total loss of DNA. On second wash, pipette off all ethanol possible. Positioning the tube in the microcentrifuge with the streak on top, a quick spin (10 s, 100 rpm) collects ethanol near the bottom of the tube. A higher rpm will result in the beads slumping to the bottom. Using a P10, pipette off residual ethanol with tube held horizontally and streak on top. Any remaining may interfere with future reactions. Return tube to rack for just 2 minutes of drying with cap open. Over-drying the beads would result in reduced yield. Resuspend beads in elution buffer and incubate. Use the magnetic rack to separate the eluted DNA and the beads, or beads can remain in the buffer through the sonication step for greater yield.
+
+\pagebreak
+
+Setup 
+
+- Pull out cleanup beads 30 min. in advance to warm up; keep out of light.
+- Make up 5 ml fresh 80% ethanol: 4 ml 100% EtOH, 1 ml H2O (enough for 2 libraries).
+- Label qubit, tapestation, and bioruptor tubes.
+
+1. Measure volume of ligation. Split amounts $\geq$ 500 ul. __________  ___________
+2. Add equal volume of resuspended beads.
+3. Aspirate 10X at 80% of volume.
+4. Incubate at RT 5 minutes.
+5. Place on rack for $\leq$ 5 minutes; aspirate stray beads away from bottom of tube.
+6. __Remove and discard supernatant.__
+7. Add 2x DNA volume 80% ethanol (cover beads); incubate 30 s. Remove, discard ethanol.
+8. Repeat ethanol wash.
+9. Quick spin. Remove trace ethanol.
+10. Dry on rack with cap open 2 minutes.
+11. Remove tube from rack. Add 210 ul 0.1X TE buffer.
+12. Aspirate 10X with pipette set to 160 ul.
+13. Incubate 5 minutes.
+14. Place on rack, Take a sample to Qubit. Refrigerate while doing QC.
+15. Genomic Tapestation: dilute with 0.1x TE $\geq$ 10 ng/ul for a min. 2 ul in a 0.2 ml tube.
+16. Resuspend beads, move 103 ul sample with beads into each of 2 Bioruptor 0.65 ml tubes.
+
+RFU __________________ fluor ________  
+RFU __________________ fluor ________  
+
+Can stop and freeze now or after sonication.
+
+### E. shearing by sonication
+*Sonication step produces RADtags of random length within a targeted size distribution.*
+
+Setup
+
+- Turn on the sonicator an hour before, should cool to 4C. Check water level, pump.
+- Make up Tapestation csv for genomic and HS assay.
+- Ice tubes for 10 minutes beforehand.
+
+1. Shear with Bioruptor Pico sonication system: Fill out sonicator platform with balance tubes. Use __7   8   9__ cycles: 30 sec on, 90 sec off. Aspirate every 3 cycles.
+2. Dilute sample from each bioruptor tube in 0.1X TE to < 1 ng/ul in 0.2 ml tubes (min. 4 ul). Send in for HS_D5000 tape on Tapestation, along with pre-sonication sample. Look for peak molarity ~ 350 bp. Store post-sonication tubes in -20C.
+3. Reshear 1-2 cycles if needed.
